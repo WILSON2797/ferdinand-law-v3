@@ -1,0 +1,26 @@
+RewriteEngine On
+
+# PERBAIKAN: Tambahkan kondisi !-f di awal agar file yang benar-benar
+# ada di disk (termasuk api.php) TIDAK di-rewrite oleh rule ini.
+# Rule lama hanya mengecek /backend/api/ tetapi tidak mengecualikan
+# file fisik seperti api.php sehingga request ke api.php bisa terganggu.
+
+# Route /backend/api/* ke index.php (hanya jika bukan file fisik)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} ^/ferdinand-law-v3/backend/api/
+RewriteRule ^ index.php [QSA,L]
+
+# Handle jika dipanggil tanpa prefix /backend
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} ^/ferdinand-law-v3/api/
+RewriteRule ^ index.php [QSA,L]
+
+# Route /ferdinand-law-v3/articles → articles.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^articles/?$ articles.php [QSA,L]
+
+# CORS Headers
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+Header always set Access-Control-Max-Age "86400"

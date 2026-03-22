@@ -1,0 +1,12 @@
+Options -Indexes
+RewriteEngine On
+
+# Route /articles (tanpa .php) → articles.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^articles/?$ articles.php [QSA,L]
+
+# Arahkan semua /backend/api/* ke backend/index.php
+# Kecuali file yang benar-benar ada (misal uploads)
+RewriteCond %{REQUEST_URI} ^/backend/api/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^backend/api/(.*)$ backend/index.php [QSA,L]
