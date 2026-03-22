@@ -5,14 +5,16 @@
       position: relative;
       overflow: hidden;
     }
+
     .articles-hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 20% 60%, rgba(201,168,76,.08) 0%, transparent 55%),
-        radial-gradient(circle at 80% 20%, rgba(201,168,76,.05) 0%, transparent 45%);
+        radial-gradient(circle at 20% 60%, rgba(201, 168, 76, .08) 0%, transparent 55%),
+        radial-gradient(circle at 80% 20%, rgba(201, 168, 76, .05) 0%, transparent 45%);
     }
+
     .articles-hero::after {
       content: '';
       position: absolute;
@@ -20,13 +22,15 @@
       top: 15%;
       width: 1px;
       height: 65%;
-      background: linear-gradient(to bottom, transparent, rgba(201,168,76,.3), transparent);
+      background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, .3), transparent);
     }
+
     .articles-hero-inner {
       position: relative;
       z-index: 1;
       max-width: 700px;
     }
+
     .articles-hero h1 {
       font-family: var(--font-serif);
       font-size: clamp(2.4rem, 5vw, 4rem);
@@ -35,17 +39,20 @@
       line-height: 1.15;
       margin-bottom: 1rem;
     }
+
     .articles-hero h1 em {
       font-style: italic;
       color: var(--gold);
     }
+
     .articles-hero p {
       font-size: 0.88rem;
-      color: rgba(255,255,255,.5);
+      color: rgba(255, 255, 255, .5);
       line-height: 1.9;
       font-weight: 300;
       max-width: 520px;
     }
+
     .articles-hero-divider {
       width: 60px;
       height: 2px;
@@ -56,7 +63,7 @@
     /* ── BREADCRUMB ── */
     .breadcrumb {
       font-size: 0.6rem;
-      color: rgba(255,255,255,.3);
+      color: rgba(255, 255, 255, .3);
       letter-spacing: 2px;
       text-transform: uppercase;
       margin-bottom: 2rem;
@@ -64,18 +71,25 @@
       align-items: center;
       gap: 10px;
     }
+
     .breadcrumb a {
       color: var(--gold);
       text-decoration: none;
       transition: opacity .2s;
     }
-    .breadcrumb a:hover { opacity: .7; }
-    .breadcrumb-sep { color: rgba(255,255,255,.2); }
+
+    .breadcrumb a:hover {
+      opacity: .7;
+    }
+
+    .breadcrumb-sep {
+      color: rgba(255, 255, 255, .2);
+    }
 
     /* ── TOOLBAR (search + count) ── */
     .articles-toolbar {
       background: var(--cream);
-      border-bottom: 1px solid rgba(201,168,76,.15);
+      border-bottom: 1px solid rgba(201, 168, 76, .15);
       padding: 1.5rem 10%;
       display: flex;
       align-items: center;
@@ -86,15 +100,17 @@
       top: 65px;
       z-index: 100;
     }
+
     .articles-search-wrap {
       position: relative;
       flex: 1;
       max-width: 380px;
     }
+
     .articles-search-wrap input {
       width: 100%;
       background: var(--white);
-      border: 1px solid rgba(201,168,76,.25);
+      border: 1px solid rgba(201, 168, 76, .25);
       color: var(--text);
       padding: 10px 16px 10px 38px;
       font-family: var(--font-sans);
@@ -102,10 +118,15 @@
       outline: none;
       transition: border-color .25s;
     }
+
     .articles-search-wrap input:focus {
       border-color: var(--gold);
     }
-    .articles-search-wrap input::placeholder { color: var(--gray); }
+
+    .articles-search-wrap input::placeholder {
+      color: var(--gray);
+    }
+
     .articles-search-icon {
       position: absolute;
       left: 12px;
@@ -115,12 +136,14 @@
       color: var(--gray);
       pointer-events: none;
     }
+
     .articles-count {
       font-size: 0.68rem;
       color: var(--gray);
       letter-spacing: 1px;
       white-space: nowrap;
     }
+
     .articles-count strong {
       color: var(--navy);
       font-weight: 700;
@@ -139,17 +162,23 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
     }
+
     /* Batalkan featured style di halaman ini */
     .articles-main .news-card.featured {
       grid-row: auto;
       flex-direction: column;
     }
+
     .articles-main .news-card.featured .news-thumb {
-      padding-bottom: 55%;  /* sama seperti card biasa */
+      padding-bottom: 55%;
+      /* sama seperti card biasa */
     }
+
     .articles-main .news-card.featured .news-title {
-      font-size: 1.2rem;   /* sama seperti card biasa */
+      font-size: 1.2rem;
+      /* sama seperti card biasa */
     }
+
     /* Sembunyikan excerpt di semua card agar seragam */
     .articles-main .news-excerpt {
       display: none;
@@ -161,11 +190,13 @@
       text-align: center;
       padding: 5rem 2rem;
     }
+
     .articles-empty-icon {
       font-size: 3.5rem;
       margin-bottom: 1.5rem;
       opacity: .3;
     }
+
     .articles-empty h3 {
       font-family: var(--font-serif);
       font-size: 1.6rem;
@@ -173,6 +204,7 @@
       font-weight: 400;
       margin-bottom: .75rem;
     }
+
     .articles-empty p {
       font-size: .82rem;
       color: var(--gray);
@@ -182,22 +214,26 @@
     .articles-main .news-pagination {
       margin-top: 4rem;
     }
+
     .articles-main .news-page-btn {
       background: var(--cream);
-      border: 1px solid rgba(201,168,76,.3);
+      border: 1px solid rgba(201, 168, 76, .3);
       color: var(--navy);
     }
+
     .articles-main .news-page-btn:hover:not(:disabled) {
       background: var(--gold);
       border-color: var(--gold);
       color: var(--navy);
     }
+
     .articles-main .news-page-btn.active {
       background: var(--navy);
       border-color: var(--navy);
       color: var(--white);
       font-weight: 700;
     }
+
     .articles-main .news-page-btn:disabled {
       opacity: .3;
       cursor: not-allowed;
@@ -206,9 +242,10 @@
     /* ── LOADING SKELETON ── */
     .skeleton-card {
       background: var(--cream);
-      border: 1px solid rgba(201,168,76,.1);
+      border: 1px solid rgba(201, 168, 76, .1);
       overflow: hidden;
     }
+
     .skeleton-thumb {
       width: 100%;
       padding-bottom: 55%;
@@ -216,9 +253,11 @@
       background-size: 200% 100%;
       animation: shimmer 1.4s infinite;
     }
+
     .skeleton-body {
       padding: 1.5rem;
     }
+
     .skeleton-line {
       height: 10px;
       border-radius: 4px;
@@ -227,12 +266,27 @@
       animation: shimmer 1.4s infinite;
       margin-bottom: .8rem;
     }
-    .skeleton-line.short { width: 40%; }
-    .skeleton-line.medium { width: 70%; }
-    .skeleton-line.full { width: 100%; }
+
+    .skeleton-line.short {
+      width: 40%;
+    }
+
+    .skeleton-line.medium {
+      width: 70%;
+    }
+
+    .skeleton-line.full {
+      width: 100%;
+    }
+
     @keyframes shimmer {
-      0%   { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
+      0% {
+        background-position: 200% 0;
+      }
+
+      100% {
+        background-position: -200% 0;
+      }
     }
 
     /* ── BACK TO TOP ── */
@@ -256,11 +310,15 @@
       transition: opacity .3s, transform .3s;
       z-index: 500;
     }
+
     #backToTop.visible {
       opacity: 1;
       pointer-events: all;
     }
-    #backToTop:hover { transform: translateY(-3px); }
+
+    #backToTop:hover {
+      transform: translateY(-3px);
+    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
@@ -268,15 +326,42 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+
     @media (max-width: 768px) {
-      .articles-hero { padding: 120px 5% 60px; }
-      .articles-toolbar { padding: 1rem 5%; top: 60px; }
-      .articles-search-wrap { max-width: 100%; }
-      .articles-main { padding: 3rem 5%; }
-      .articles-main .news-grid { grid-template-columns: 1fr; }
+      .articles-hero {
+        padding: 120px 5% 60px;
+      }
+
+      .articles-toolbar {
+        padding: 1rem 5%;
+        top: 60px;
+      }
+
+      .articles-search-wrap {
+        max-width: 100%;
+      }
+
+      .articles-main {
+        padding: 3rem 5%;
+      }
+
+      .articles-main .news-grid {
+        grid-template-columns: 1fr;
+      }
     }
+
     @media (max-width: 480px) {
-      .articles-hero { padding: 100px 4% 50px; }
-      .articles-toolbar { padding: .9rem 4%; flex-direction: column; align-items: flex-start; }
-      .articles-main { padding: 2.5rem 4%; }
+      .articles-hero {
+        padding: 100px 4% 50px;
+      }
+
+      .articles-toolbar {
+        padding: .9rem 4%;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .articles-main {
+        padding: 2.5rem 4%;
+      }
     }

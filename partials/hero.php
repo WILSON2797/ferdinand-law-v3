@@ -8,7 +8,7 @@
     <h1 class="hero-title" id="hero-title">Excellence in <br><em>Legal Advocacy</em></h1>
     <p class="hero-subtitle" id="hero-subtitle">Memberikan nasihat dan representasi hukum terpercaya dengan integritas, keahlian, dan dedikasi penuh kepada keadilan.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Konsultasi Gratis →</a>
+      <a href="#contact" class="btn-primary">Konsultasi →</a>
       <a href="#practice" class="btn-outline">Lihat Layanan</a>
     </div>
   </div>

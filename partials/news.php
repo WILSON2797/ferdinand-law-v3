@@ -6,7 +6,7 @@
       <h2 class="section-title">Berita & Artikel</h2>
     </div>
     <!-- Tombol sekarang redirect ke halaman /articles, bukan buka modal -->
-    <a href="/ferdinand-law-v3/articles" class="btn-primary" style="font-size:0.65rem;padding:12px 24px;text-decoration:none">Semua Artikel →</a>
+    <a href="/articles" class="btn-primary" style="font-size:0.65rem;padding:12px 24px;text-decoration:none">Semua Artikel →</a>
   </div>
   <div class="news-grid" id="newsGrid">
     <!-- Loaded dynamically -->
