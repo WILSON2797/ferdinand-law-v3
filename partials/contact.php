@@ -39,6 +39,32 @@
       <a href="#" class="social-btn" id="linkedin-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
       <a href="#" class="social-btn" id="instagram-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
     </div>
+
+    <!-- Google Maps -->
+      <div class="contact-map" style="margin-top:2rem;border-radius:12px;overflow:hidden;border:1px solid rgba(201,168,76,0.2);position:relative;">
+    
+        <!-- Link klik (BENAR) -->
+        <a href="https://www.google.com/maps/search/?api=1&query=FERDINAND+HUTAHAEAN+%26+Co+Advocates+dan+Legal+Consultan"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Buka di Google Maps"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;">
+        </a>
+
+        <!-- Iframe -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3573.9928206956256!2d106.86804787448254!3d-6.195938593791721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f572405890bd%3A0xe3a78dac1e4ad8f5!2sFERDINAND%20HUTAHAEAN%20%26%20Co%20Advocates%20dan%20Legal%20Consultan!5e1!3m2!1sid!2sid!4v1774364494837!5m2!1sid!2sid"
+          width="100%"
+          height="300"
+          style="border:0;display:block;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Lokasi Ferdinand Hutahaean & Co">
+        </iframe>
+
+      </div>
+
   </div>
   <div class="contact-form" data-animate>
     <div class="section-label" style="color:rgba(201,168,76,0.7)">Formulir Konsultasi</div>
