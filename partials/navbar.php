@@ -19,6 +19,7 @@ $base          = $isHome ? '' : $baseDir . '/';
     <li><a href="<?= $base ?>#team">Team</a></li>
     <li><a href="<?= $base ?>#testimonials">Client</a></li>
     <li><a href="<?= $base ?>#news">Article</a></li>
+    <li><a href="<?= $base ?>#gallery">Gallery</a></li>
     <li><a href="<?= $base ?>#contact" class="nav-cta">Contact</a></li>
   </ul>
   <button class="hamburger" onclick="toggleMobileMenu()">
@@ -35,5 +36,6 @@ $base          = $isHome ? '' : $baseDir . '/';
   <a href="<?= $base ?>#team"         onclick="toggleMobileMenu()">Team</a>
   <a href="<?= $base ?>#testimonials" onclick="toggleMobileMenu()">Client</a>
   <a href="<?= $base ?>#news"         onclick="toggleMobileMenu()">Article</a>
+  <a href="<?= $base ?>#gallery"         onclick="toggleMobileMenu()">Gallery</a>
   <a href="<?= $base ?>#contact"      onclick="toggleMobileMenu()">Contact</a>
 </div>

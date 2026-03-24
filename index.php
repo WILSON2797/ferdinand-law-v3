@@ -15,6 +15,7 @@
 <?php include 'partials/team.php'; ?>
 <?php include 'partials/testimonials.php'; ?>
 <?php include 'partials/news.php'; ?>
+<?php include 'partials/gallery.php'; ?>
 <?php include 'partials/contact.php'; ?>
 <?php include 'partials/footer.php'; ?>
 
