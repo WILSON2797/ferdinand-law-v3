@@ -10,12 +10,7 @@ Website firma hukum lengkap dengan fitur Admin Panel.
 ferdinand-law/
 ├── index.php                   ← Website utama (buka ini di browser)
 ├── .htaccess                   ← URL rewriting root
-├── config.js                   ← Konfigurasi API URL & konstanta
-├── utils.js                    ← Helper functions (toast, format, dll)
-├── public.js                   ← Logic halaman publik (load sections)
-├── admin.js                    ← Logic admin panel (CRUD, settings)
-├── modal.js                    ← Logic modal (form tambah/edit)
-├── init.js                     ← Inisialisasi & event listeners
+|
 │
 ├── partials/                   ← Potongan HTML (di-include oleh index.php)
 │   ├── head.php                ← <head>, meta tags, CSS & font links
@@ -51,7 +46,15 @@ ferdinand-law/
 │       └── upload.php          ← Upload gambar (validasi & penyimpanan)
 │
 └── assets/
-    └── img/                    ← Gambar website (logo, foto tim, dll)
+    └── img/                    
+    └── js/                    
+        ├── config.js          
+        ├── utils.js          
+        ├── public.js          
+        ├── admin.js          
+        ├── modal.js          
+        ├── init.js          
+        ├── gallery.js          
 ```
 
 ---

@@ -30,6 +30,9 @@
       <button class="admin-nav-item" onclick="showAdminPanel('news', this)">
         <span class="nav-icon">📰</span> Berita
       </button>
+      <button class="admin-nav-item" onclick="showAdminPanel('gallery', this)">
+        <span class="nav-icon">🖼️</span> Galeri
+      </button>
 
       <div class="admin-nav-section">Lainnya</div>
       <button class="admin-nav-item" onclick="showAdminPanel('contacts', this)">
@@ -220,6 +223,33 @@
                 <tr><th>Judul</th><th>Penulis</th><th>Tanggal</th><th>Status</th><th>Aksi</th></tr>
               </thead>
               <tbody id="news-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- GALLERY -->
+      <div class="admin-panel" id="panel-gallery">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+          <div style="color:rgba(255,255,255,0.5);font-size:0.8rem">Kelola foto galeri firma</div>
+          <button class="btn-admin" onclick="openModal('gallery')">+ Upload Foto</button>
+        </div>
+
+        <!-- Preview grid upload -->
+        <div id="gallery-preview-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;margin-bottom:2rem"></div>
+
+        <div class="admin-card">
+          <div class="admin-table-wrap">
+            <table class="admin-table" id="gallery-table">
+              <thead>
+                <tr>
+                  <th>Foto</th>
+                  <th>Deskripsi</th>
+                  <th>Tanggal</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="gallery-tbody"></tbody>
             </table>
           </div>
         </div>

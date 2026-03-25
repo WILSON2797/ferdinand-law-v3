@@ -79,13 +79,15 @@ function showAdminPanel(name, btn) {
     if (btn) btn.classList.add('active');
     const titles = {
         dashboard: 'Dashboard', settings: 'Pengaturan Situs', practice: 'Area Praktik',
-        team: 'Tim', testimonials: 'Testimoni', cases: 'Kasus', news: 'Berita & Artikel', contacts: 'Pesan Masuk'
+        team: 'Tim', testimonials: 'Testimoni', cases: 'Kasus', news: 'Berita & Artikel',
+        contacts: 'Pesan Masuk', gallery: 'Galeri'
     };
     document.getElementById('admin-page-title').textContent = titles[name] || name;
     const loaders = {
         settings: loadAdminSettings, practice: loadAdminPractice,
         team: loadAdminTeam, testimonials: loadAdminTestimonials,
-        cases: loadAdminCases, news: loadAdminNews, contacts: loadAdminContacts
+        cases: loadAdminCases, news: loadAdminNews, contacts: loadAdminContacts,
+        gallery: loadAdminGallery
     };
     if (loaders[name]) loaders[name]();
 }
@@ -270,4 +272,32 @@ async function deleteContact(id) {
     if (!confirm('Hapus pesan ini?')) return;
     await apiDelete('/contacts/' + id);
     loadAdminContacts();
+}
+
+// ===== ADMIN GALLERY =====
+async function loadAdminGallery() {
+    const items = await apiGet('/gallery', true);
+    const tbody = document.getElementById('gallery-tbody');
+    if (!items || !items.length) {
+        tbody.innerHTML = `<tr><td colspan="4" style="text-align:center;color:rgba(255,255,255,0.3);padding:2rem">Belum ada foto</td></tr>`;
+        return;
+    }
+    tbody.innerHTML = items.map(g => `
+    <tr>
+      <td>
+        <img src="${esc(imgUrl(g.image_url || g.image || ''))}" alt=""
+          style="width:72px;height:52px;object-fit:cover;border-radius:6px;border:1px solid rgba(201,168,76,0.2)"
+          onerror="this.style.display='none'" />
+      </td>
+      <td style="max-width:220px">
+        <span style="color:rgba(255,255,255,0.75);font-size:0.8rem;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">
+          ${esc(g.description || '—')}
+        </span>
+      </td>
+      <td style="color:rgba(255,255,255,0.5);font-size:0.78rem;white-space:nowrap">${fmtDate(g.date || g.created_at)}</td>
+      <td>
+        <button class="btn-admin btn-admin-outline btn-admin-sm" onclick="editItem('gallery',${g.id})">Edit</button>
+        <button class="btn-admin btn-admin-danger btn-admin-sm" onclick="deleteItem('gallery',${g.id})">Hapus</button>
+      </td>
+    </tr>`).join('');
 }

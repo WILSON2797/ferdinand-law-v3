@@ -6,7 +6,7 @@ function openModal(type, data = null) {
     modalType = type;
     editingId = data?.id || null;
     document.getElementById('modal-title').textContent = (editingId ? 'Edit' : 'Tambah') + ' ' + {
-        practice: 'Area Praktik', team: 'Anggota Tim', testimonials: 'Testimoni', cases: 'Kasus', news: 'Artikel'
+        practice: 'Area Praktik', team: 'Anggota Tim', testimonials: 'Testimoni', cases: 'Kasus', news: 'Artikel', gallery: 'Foto Galeri'
     }[type];
 
     const bodies = {
@@ -84,7 +84,18 @@ function openModal(type, data = null) {
       </div>
       <div class="admin-field"><label>Status</label>
         <select id="m-is_published"><option value="0" ${!data?.is_published ? 'selected' : ''}>Draft</option><option value="1" ${data?.is_published ? 'selected' : ''}>Terbit</option></select>
-      </div>`
+      </div>`,
+        gallery: `
+      <div class="admin-field">
+        <label>Upload Foto</label>
+        ${data?.image_url ? `<div style="margin-bottom:8px"><img src="${esc(imgUrl(data.image_url))}" style="width:100%;max-height:160px;object-fit:cover;border-radius:8px;border:1px solid rgba(201,168,76,0.3)" onerror="this.style.display='none'"></div>` : ''}
+        <input type="file" id="m-gallery-file" accept="image/jpeg,image/png,image/webp" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:var(--white);padding:10px 14px;font-size:0.82rem;font-family:var(--font-sans);outline:none;cursor:pointer" />
+        <input type="hidden" id="m-image_url" value="${esc(data?.image_url || '')}" />
+        <div id="m-gallery-preview" style="margin-top:8px;display:none"><img id="m-gallery-preview-img" style="width:100%;max-height:160px;object-fit:cover;border-radius:8px;border:1px solid rgba(201,168,76,0.3)" /></div>
+        <div id="m-gallery-status" style="font-size:0.7rem;margin-top:6px;color:rgba(255,255,255,0.4)"></div>
+      </div>
+      <div class="admin-field"><label>Deskripsi</label><textarea id="m-description" placeholder="Keterangan foto...">${esc(data?.description || '')}</textarea></div>
+      <div class="admin-field"><label>Tanggal</label><input type="date" id="m-date" value="${esc((data?.date || new Date().toISOString()).substring(0, 10))}" /></div>`
     };
 
     document.getElementById('modal-body').innerHTML = `
@@ -128,10 +139,27 @@ function openModal(type, data = null) {
             });
         }
     }
+
+    // Preview foto gallery
+    if (type === 'gallery') {
+        const fileInput = document.getElementById('m-gallery-file');
+        if (fileInput) {
+            fileInput.addEventListener('change', function () {
+                const file = this.files[0];
+                if (!file) return;
+                const preview    = document.getElementById('m-gallery-preview');
+                const previewImg = document.getElementById('m-gallery-preview-img');
+                const reader     = new FileReader();
+                reader.onload    = e => { previewImg.src = e.target.result; preview.style.display = 'block'; };
+                reader.readAsDataURL(file);
+                document.getElementById('m-gallery-status').textContent = '📎 ' + file.name;
+            });
+        }
+    }
 }
 
 async function editItem(type, id) {
-    const endpoints = { practice: '/practice-areas/', team: '/team/', testimonials: '/testimonials/', cases: '/cases/', news: '/news/' };
+    const endpoints = { practice: '/practice-areas/', team: '/team/', testimonials: '/testimonials/', cases: '/cases/', news: '/news/', gallery: '/gallery/' };
     const data = await apiGet(endpoints[type] + id, true);
     openModal(type, data);
     editingId = id;
@@ -149,7 +177,8 @@ function getModalData() {
         team:         { name: 'm-name', position: 'm-position', education: 'm-education', photo: 'm-photo', sort_order: 'm-sort_order', is_active: 'm-is_active' },
         testimonials: { client_name: 'm-client_name', client_company: 'm-client_company', content: 'm-content', rating: 'm-rating', is_active: 'm-is_active' },
         cases:        { title: 'm-title', category: 'm-category', year: 'm-year', description: 'm-description', outcome: 'm-outcome', is_featured: 'm-is_featured', is_active: 'm-is_active' },
-        news:         { title: 'm-title', author: 'm-author', excerpt: 'm-excerpt', content: 'm-content', image: 'm-image', is_published: 'm-is_published' }
+        news:         { title: 'm-title', author: 'm-author', excerpt: 'm-excerpt', content: 'm-content', image: 'm-image', is_published: 'm-is_published' },
+        gallery:      { image_url: 'm-image_url', description: 'm-description', date: 'm-date' }
     };
     const data = {};
     Object.entries(maps[modalType] || {}).forEach(([key, elId]) => { const v = g(elId); if (v !== undefined) data[key] = v; });
@@ -179,8 +208,18 @@ async function saveModal() {
         if (contentEl) contentEl.value = htmlFromPlain(contentEl.value);
     }
 
+    // Upload foto gallery
+    if (modalType === 'gallery') {
+        const fileInput = document.getElementById('m-gallery-file');
+        if (fileInput && fileInput.files[0]) {
+            const url = await uploadFile(fileInput.files[0], 'm-gallery-status');
+            if (!url) return;
+            document.getElementById('m-image_url').value = url;
+        }
+    }
+
     const data      = getModalData();
-    const endpoints = { practice: '/practice-areas', team: '/team', testimonials: '/testimonials', cases: '/cases', news: '/news' };
+    const endpoints = { practice: '/practice-areas', team: '/team', testimonials: '/testimonials', cases: '/cases', news: '/news', gallery: '/gallery' };
     const ep        = endpoints[modalType];
     let res;
     if (editingId) res = await apiPost(ep + '/' + editingId, data, 'PUT');
@@ -189,12 +228,13 @@ async function saveModal() {
     if (res && !res.error) {
         showToast('Berhasil disimpan!');
         closeModal();
-        const loaders = { practice: loadAdminPractice, team: loadAdminTeam, testimonials: loadAdminTestimonials, cases: loadAdminCases, news: loadAdminNews };
+        const loaders = { practice: loadAdminPractice, team: loadAdminTeam, testimonials: loadAdminTestimonials, cases: loadAdminCases, news: loadAdminNews, gallery: loadAdminGallery };
         if (loaders[modalType]) loaders[modalType]();
         if (modalType === 'practice')     loadPractice();
         if (modalType === 'team')         { loadTeam(); setTimeout(() => location.reload(), 1200); }
         if (modalType === 'testimonials') loadTestimonials();
         if (modalType === 'news')         loadNews();
+        if (modalType === 'gallery')      { if (typeof loadGallery === 'function') loadGallery(); }
     } else {
         showToast('Gagal menyimpan: ' + (res?.error || 'Cek koneksi server'), true);
     }
@@ -202,16 +242,17 @@ async function saveModal() {
 
 async function deleteItem(type, id) {
     if (!confirm('Yakin ingin menghapus item ini?')) return;
-    const endpoints = { practice: '/practice-areas/', team: '/team/', testimonials: '/testimonials/', cases: '/cases/', news: '/news/' };
+    const endpoints = { practice: '/practice-areas/', team: '/team/', testimonials: '/testimonials/', cases: '/cases/', news: '/news/', gallery: '/gallery/' };
     const res = await apiDelete(endpoints[type] + id);
     if (res && !res.error) {
         showToast('Berhasil dihapus');
-        const loaders = { practice: loadAdminPractice, team: loadAdminTeam, testimonials: loadAdminTestimonials, cases: loadAdminCases, news: loadAdminNews };
+        const loaders = { practice: loadAdminPractice, team: loadAdminTeam, testimonials: loadAdminTestimonials, cases: loadAdminCases, news: loadAdminNews, gallery: loadAdminGallery };
         if (loaders[type]) loaders[type]();
         if (type === 'practice')     loadPractice();
         if (type === 'team')         loadTeam();
         if (type === 'testimonials') loadTestimonials();
         if (type === 'news')         loadNews();
+        if (type === 'gallery')      { if (typeof loadGallery === 'function') loadGallery(); }
     } else {
         showToast('Gagal hapus: ' + (res?.error || ''), true);
     }

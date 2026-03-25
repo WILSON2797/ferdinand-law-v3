@@ -120,7 +120,7 @@
         <div class="gallery-card-img-wrap">
           <img
             class="gallery-card-img"
-            src="${escHtml(item.image_url || item.image || '')}"
+            src="${escHtml(imgUrl(item.image_url || item.image || ''))}"
             alt="${escHtml(item.description || 'Foto galeri')}"
             loading="lazy"
           />
@@ -161,15 +161,13 @@
   /* ── Fetch dari API ── */
   async function loadGallery() {
     try {
-      const res  = await fetch(`${API}/gallery`);
-      const json = await res.json();
-      items = Array.isArray(json) ? json : (json.data || json.items || []);
+      const json = await apiGet('/gallery');
+      items = Array.isArray(json) ? json : (json?.data || json?.items || []);
       visibleCount = getVisibleCount();
       renderCards();
       startAutoplay();
     } catch (err) {
       console.error('Gallery fetch error:', err);
-      /* Fallback: kosongkan skeleton dan tampilkan empty */
       track.innerHTML = '';
       emptyState.style.display = 'block';
     }
@@ -265,7 +263,7 @@
     if (!item) return;
     lbShimmer.classList.add('active');
     lbImg.style.opacity = '0';
-    lbImg.src = item.image_url || item.image || '';
+    lbImg.src = imgUrl(item.image_url || item.image || '');
     lbImg.alt = item.description || '';
     lbImg.onload = () => {
       lbShimmer.classList.remove('active');

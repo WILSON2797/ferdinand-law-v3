@@ -37,6 +37,7 @@ $routes = [
     '/news'           => 'news',
     '/contacts'       => 'contacts',
     '/upload'         => 'upload',
+    '/gallery'        => 'gallery',
 ];
 
 foreach ($routes as $prefix => $handler) {
