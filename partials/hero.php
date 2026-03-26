@@ -3,6 +3,13 @@
   <div class="hero-bg"></div>
   <div class="hero-pattern"></div>
   <div class="hero-lines"></div>
+
+   <!-- Logo posisi absolute kiri -->
+  <div class="hero-logo-side">
+    <img src="./assets/img/logo.png" alt="Ferdinand Hutahaean & Co" class="hero-logo-img" />
+  </div>
+
+
   <div class="hero-content">
     <div class="hero-badge"><span id="hero-badge-text">Advocates & Legal Consultants</span></div>
     <h1 class="hero-title" id="hero-title">Excellence in <br><em>Legal Advocacy</em></h1>

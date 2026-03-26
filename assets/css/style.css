@@ -224,6 +224,34 @@ body {
 }
 
 /* ===== HERO ===== */
+
+/* ===== HERO LOGO ABSOLUTE ===== */
+.hero-logo-side {
+    position: absolute;
+    left: 3%;           /* sesuaikan dengan posisi bulatan merah */
+    top: 30%;
+    transform: translateY(-50%);
+    z-index: 2;
+    animation: heroFadeUp 1.2s var(--transition) 0.1s both;
+}
+
+.hero-logo-img {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    border-radius: 50%;
+    mix-blend-mode: lighten;
+    filter: drop-shadow(0 4px 20px rgba(201, 168, 76, 0.4));
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.hero-logo-img:hover {
+    filter: drop-shadow(0 6px 28px rgba(201, 168, 76, 0.6));
+    transform: scale(1.05);
+}
+
+
+
 #hero {
     min-height: 100vh;
     background: var(--navy);
@@ -497,6 +525,40 @@ body {
         transform: translateX(-50%) translateY(10px);
     }
 }
+
+/* Resposive Mobile Logo Hero */
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .hero-logo-side {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        display: block !important;
+        margin-bottom: 1.5rem;
+        margin-top: 1rem;
+    }
+
+    .hero-logo-img {
+        width: 110px !important;
+        height: 110px !important;
+        display: block;
+        margin-left: 10px !important;   /* ← paksa ke kiri */
+    }
+
+    #hero {
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        padding-top: 100px !important;
+        align-items: flex-start !important;
+    }
+
+    .hero-content {
+        padding: 0 5% !important;    /* ← sesuaikan padding konten mobile */
+    }
+} 
+
+/* Hero End */
 
 /* ===== SECTION BASE ===== */
 section {
@@ -2695,4 +2757,29 @@ footer {
     justify-content: center;
     font-size: 3rem;
     opacity: 0.4;
+}
+
+/* Type writer Style */
+
+/* Typewriter Effect */
+.typewriter-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: var(--gold);
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: cursorBlink 0.7s step-end infinite;
+}
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+.hero-title,
+.hero-subtitle {
+    visibility: hidden;
+}
+.hero-title.typing-started,
+.hero-subtitle.typing-started {
+    visibility: visible;
 }
