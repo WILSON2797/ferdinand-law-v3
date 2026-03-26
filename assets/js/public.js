@@ -50,7 +50,13 @@ async function loadSiteData() {
     const s = await apiGet('/settings');
     if (!s) return;
 
-    if (s.hero_title)    document.getElementById('hero-title').innerHTML = s.hero_title.replace(/\n/g, '<br>');
+    if (s.hero_title) {
+    const parts = s.hero_title.split('|').map(s => s.trim());
+    const html  = parts.length > 1
+        ? `${parts[0]}<br><em>${parts[1]}</em>`
+        : parts[0];
+    document.getElementById('hero-title').innerHTML = html;
+}
     if (s.hero_subtitle) document.getElementById('hero-subtitle').textContent = s.hero_subtitle;
 
     if (s.about_title)   document.getElementById('about-title').textContent = s.about_title;
@@ -70,6 +76,9 @@ async function loadSiteData() {
         document.getElementById('stat-years-badge').textContent = s.stats_years;
         document.getElementById('s-years').textContent = s.stats_years;
     }
+
+    startCounters(s);
+
     if (s.stats_lawyers) document.getElementById('s-lawyers').textContent = s.stats_lawyers;
 
     if (s.address)      document.getElementById('c-address').textContent = s.address;
@@ -413,10 +422,10 @@ function closeArticle() {
 
 // ===== HERO STATS COUNTER ANIMATION =====
 function animateCounter(element, target, duration = 2000) {
+  if (!element || target <= 0) return;
   let start = 0;
   const increment = target / (duration / 16); // ~60fps
   const suffix = '+';
-
   const timer = setInterval(() => {
     start += increment;
     if (start >= target) {
@@ -427,11 +436,10 @@ function animateCounter(element, target, duration = 2000) {
   }, 16);
 }
 
-function startCounters() {
-  animateCounter(document.getElementById('stat-cases'),   500, 2000);
-  animateCounter(document.getElementById('stat-clients'), 350, 2000);
-  animateCounter(document.getElementById('stat-years'),    20, 1500);
+function startCounters(s) {
+  const parseNum = str => parseInt((str ?? '').replace(/\D/g, '')) || 0;
+  animateCounter(document.getElementById('stat-cases'),   parseNum(s.stats_cases),   2000);
+  animateCounter(document.getElementById('stat-clients'), parseNum(s.stats_clients), 2000);
+  animateCounter(document.getElementById('stat-years'),   parseNum(s.stats_years),   1500);
 }
 
-// Jalankan saat halaman selesai load
-document.addEventListener('DOMContentLoaded', startCounters);

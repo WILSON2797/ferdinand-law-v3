@@ -629,12 +629,14 @@ section {
 }
 
 .about-emblem-sub {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     color: rgba(255, 255, 255, 0.5);
     letter-spacing: 4px;
     text-transform: uppercase;
     text-align: center;
-    margin-left: 180px;
+    position: absolute;
+    top: 10%;       /* ← sesuaikan posisi vertikal */
+    left: 5%;      /* ← sesuaikan posisi horizontal */
     /* display: none; */
 }
 
