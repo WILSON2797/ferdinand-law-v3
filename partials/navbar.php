@@ -9,8 +9,15 @@ $base          = $isHome ? '' : $baseDir . '/';
 <!-- ====== NAVBAR ====== -->
 <nav id="navbar">
   <a href="<?= $baseDir ?>/" class="nav-logo">
-    <span class="nav-logo-main">Ferdinand Hutahaean & Co</span>
-    <span class="nav-logo-sub">Advocates & Legal Consultants</span>
+    <img
+      src="<?= $baseDir ?>./assets/img/logofix.png"
+      alt="Ferdinand Hutahaean & Co Logo"
+      class="nav-logo-img"
+    />
+    <span class="nav-logo-text">
+      <span class="nav-logo-main">Ferdinand Hutahaean & Co</span>
+      <span class="nav-logo-sub">Advocates & Legal Consultants</span>
+    </span>
   </a>
   <ul class="nav-links">
     <li><a href="<?= $base ?>#about">About</a></li>

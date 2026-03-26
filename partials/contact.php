@@ -60,7 +60,7 @@
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          title="Lokasi Ferdinand Hutahaean & Co">
+          title="Lokasi Ferdinand Hutahaean & CO">
         </iframe>
 
       </div>

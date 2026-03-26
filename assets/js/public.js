@@ -410,3 +410,28 @@ function closeArticle() {
     document.getElementById('articleModal').classList.remove('open');
     document.body.style.overflow = '';
 }
+
+// ===== HERO STATS COUNTER ANIMATION =====
+function animateCounter(element, target, duration = 2000) {
+  let start = 0;
+  const increment = target / (duration / 16); // ~60fps
+  const suffix = '+';
+
+  const timer = setInterval(() => {
+    start += increment;
+    if (start >= target) {
+      start = target;
+      clearInterval(timer);
+    }
+    element.textContent = Math.floor(start) + suffix;
+  }, 16);
+}
+
+function startCounters() {
+  animateCounter(document.getElementById('stat-cases'),   500, 2000);
+  animateCounter(document.getElementById('stat-clients'), 350, 2000);
+  animateCounter(document.getElementById('stat-years'),    20, 1500);
+}
+
+// Jalankan saat halaman selesai load
+document.addEventListener('DOMContentLoaded', startCounters);

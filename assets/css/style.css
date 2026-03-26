@@ -75,10 +75,22 @@ body {
 
 .nav-logo {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;        /* ← ubah dari column ke row */
+    align-items: center;        /* ← tambahkan ini */
+    gap: 10px;                  /* ← jarak antara logo dan teks */
     text-decoration: none;
 }
+.nav-logo-text {
+    display: flex;
+    flex-direction: column;
+}
 
+.nav-logo-img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 50%;
+}
 .nav-logo-main {
     font-family: var(--font-serif);
     font-size: 1.25rem;
@@ -101,7 +113,7 @@ body {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 2.5rem;
+    gap: 1.8rem;
     list-style: none;
 }
 
@@ -672,6 +684,7 @@ section {
     color: var(--gold);
     font-weight: 600;
     letter-spacing: -2px;
+    /* display: none; */
 }
 
 .about-emblem-sub {
@@ -680,12 +693,13 @@ section {
     letter-spacing: 4px;
     text-transform: uppercase;
     text-align: center;
+    /* display: none; */
 }
 
 .about-badge-float {
     position: absolute;
     right: -20px;
-    bottom: 60px;
+    bottom: -60px;
     background: var(--gold);
     color: var(--navy);
     padding: 20px 24px;

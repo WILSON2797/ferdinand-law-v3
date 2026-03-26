@@ -1,7 +1,7 @@
 <!-- ====== ADMIN LOGIN ====== -->
 <div class="admin-login" id="adminLogin" style="display:none">
   <div class="admin-login-box">
-    <div class="admin-login-logo">Ferdinand Hutahaean & Co</div>
+    <div class="admin-login-logo">Ferdinand Hutahaean & CO</div>
     <div class="admin-login-sub">Admin Portal</div>
     <div class="admin-login-title">Masuk ke Panel Admin</div>
     <div id="login-error" class="login-error" style="display:none"></div>

@@ -3,7 +3,7 @@
   <div class="about-visual" data-animate>
     <div class="about-corner-accent"></div>
     <div class="about-img-frame">
-      <img src="assets/img/law3.jpg" alt="Ferdinand Hutahaean & Co" class="about-img-photo" />
+      <img src="./assets/img/about.png" alt="Ferdinand Hutahaean & Co" class="about-img-photo" />
       <div class="about-img-inner" id="aboutImgInner">
         <div class="about-emblem">FH</div>
         <div class="about-emblem-sub">Est. 2004<br>Jakarta, Indonesia</div>
@@ -17,7 +17,7 @@
   <div class="about-content" data-animate>
     <div class="section-label">Tentang Firma</div>
     <h2 class="section-title" id="about-title">Tentang Firma Kami</h2>
-    <p class="section-desc" id="about-content">Ferdinand Hutahaean & Co adalah firma hukum terkemuka yang berpengalaman dalam berbagai bidang hukum.</p>
+    <p class="section-desc" id="about-content">Ferdinand Hutahaean & CO adalah firma hukum terkemuka yang berpengalaman dalam berbagai bidang hukum.</p>
     <blockquote class="about-vision" id="about-vision">
       "Menjadi firma hukum pilihan utama yang dikenal atas keunggulan, integritas, dan komitmen tak tergoyahkan terhadap keadilan."
     </blockquote>
