@@ -53,9 +53,9 @@
 
         <!-- Iframe -->
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3573.9928206956256!2d106.86804787448254!3d-6.195938593791721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f572405890bd%3A0xe3a78dac1e4ad8f5!2sFERDINAND%20HUTAHAEAN%20%26%20Co%20Advocates%20dan%20Legal%20Consultan!5e1!3m2!1sid!2sid!4v1774364494837!5m2!1sid!2sid"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.5122633843234!2d106.87062279999999!3d-6.1959386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f572405890bd%3A0xe3a78dac1e4ad8f5!2sFERDINAND%20HUTAHAEAN%20%26%20Co%20Advocates%20dan%20Legal%20Consultan!5e0!3m2!1sid!2sid!4v1774485176996!5m2!1sid!2sid"
           width="100%"
-          height="300"
+          height="200"
           style="border:0;display:block;"
           allowfullscreen=""
           loading="lazy"
