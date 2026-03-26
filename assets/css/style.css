@@ -237,33 +237,6 @@ body {
 
 /* ===== HERO ===== */
 
-/* ===== HERO LOGO ABSOLUTE ===== */
-.hero-logo-side {
-    position: absolute;
-    left: 3%;           /* sesuaikan dengan posisi bulatan merah */
-    top: 30%;
-    transform: translateY(-50%);
-    z-index: 2;
-    animation: heroFadeUp 1.2s var(--transition) 0.1s both;
-}
-
-.hero-logo-img {
-    width: 160px;
-    height: 160px;
-    object-fit: contain;
-    border-radius: 50%;
-    mix-blend-mode: lighten;
-    filter: drop-shadow(0 4px 20px rgba(201, 168, 76, 0.4));
-    transition: filter 0.3s ease, transform 0.3s ease;
-}
-
-.hero-logo-img:hover {
-    filter: drop-shadow(0 6px 28px rgba(201, 168, 76, 0.6));
-    transform: scale(1.05);
-}
-
-
-
 #hero {
     min-height: 100vh;
     background: var(--navy);
@@ -538,38 +511,6 @@ body {
     }
 }
 
-/* Resposive Mobile Logo Hero */
-/* ===== MOBILE RESPONSIVE ===== */
-@media (max-width: 768px) {
-    .hero-logo-side {
-        position: relative !important;
-        left: auto !important;
-        top: auto !important;
-        transform: none !important;
-        display: block !important;
-        margin-bottom: 1.5rem;
-        margin-top: 1rem;
-    }
-
-    .hero-logo-img {
-        width: 110px !important;
-        height: 110px !important;
-        display: block;
-        margin-left: 10px !important;   /* ← paksa ke kiri */
-    }
-
-    #hero {
-        flex-direction: column !important;
-        justify-content: flex-start !important;
-        padding-top: 100px !important;
-        align-items: flex-start !important;
-    }
-
-    .hero-content {
-        padding: 0 5% !important;    /* ← sesuaikan padding konten mobile */
-    }
-} 
-
 /* Hero End */
 
 /* ===== SECTION BASE ===== */
@@ -684,7 +625,7 @@ section {
     color: var(--gold);
     font-weight: 600;
     letter-spacing: -2px;
-    /* display: none; */
+    display: none;
 }
 
 .about-emblem-sub {
@@ -693,6 +634,7 @@ section {
     letter-spacing: 4px;
     text-transform: uppercase;
     text-align: center;
+    margin-left: 180px;
     /* display: none; */
 }
 
