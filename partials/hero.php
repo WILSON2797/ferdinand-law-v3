@@ -6,7 +6,7 @@
 
    <!-- Logo posisi absolute kiri -->
   <div class="hero-logo-side">
-    <img src="./assets/img/logofix.png" alt="Ferdinand Hutahaean & Co" class="hero-logo-img" />
+    <img src="./assets/img/Logofix.png" alt="Ferdinand Hutahaean & Co" class="hero-logo-img" />
   </div>
 
 

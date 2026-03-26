@@ -10,7 +10,7 @@ $base          = $isHome ? '' : $baseDir . '/';
 <nav id="navbar">
   <a href="<?= $baseDir ?>/" class="nav-logo">
     <img
-      src="<?= $baseDir ?>./assets/img/logofix.png"
+      src="<?= $baseDir ?>/assets/img/Logofix.png"
       alt="Ferdinand Hutahaean & Co Logo"
       class="nav-logo-img"
     />
