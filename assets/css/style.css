@@ -567,10 +567,11 @@ section {
     position: absolute;
     inset: 0;
     width: 100%;
-    height: 100%;
+    height: 120%;
     object-fit: cover;
     object-position: center;
-    opacity: 0.85;         /* sedikit transparan supaya emblem FH masih terlihat */
+    opacity: 0.85;
+    
 }
 
 .about-visual {
@@ -635,9 +636,9 @@ section {
     text-transform: uppercase;
     text-align: center;
     position: absolute;
-    top: 10%;       /* ← sesuaikan posisi vertikal */
-    left: 5%;      /* ← sesuaikan posisi horizontal */
-    /* display: none; */
+    top: 10%;
+    left: 5%;
+    display: none;
 }
 
 .about-badge-float {
@@ -826,6 +827,64 @@ section {
     font-size: 0.78rem;
     color: rgba(255, 255, 255, 0.5);
     line-height: 1.9;
+}
+.practice-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+.practice-card-desc-wrap {
+  --practice-desc-max-height: 10em; /* ±6 baris teks */
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* State collapsed: potong teks & fade di ujung bawah */
+.practice-card-desc-wrap.collapsed {
+  max-height: var(--practice-desc-max-height);
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+          mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+}
+
+/* Saat expanded: hapus mask */
+.practice-card-desc-wrap:not(.collapsed) {
+  -webkit-mask-image: none;
+          mask-image: none;
+}
+
+/* --- Tombol Baca Selengkapnya / Lebih Sedikit --- */
+.practice-read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  color: var(--gold, #c9a84c);
+  transition: color 0.2s, gap 0.2s;
+  align-self: flex-start;
+}
+
+.practice-read-more:hover {
+  color: var(--gold-light, #e8c97a);
+  gap: 0.55rem;
+}
+ 
+.practice-read-more-arrow {
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-style: normal;
+}
+ 
+/* Saat expanded, putar panah ke atas */
+.practice-read-more[aria-expanded="true"] .practice-read-more-arrow {
+  transform: rotate(180deg);
 }
 
 /* ===== STATS BAR ===== */

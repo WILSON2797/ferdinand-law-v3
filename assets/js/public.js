@@ -109,10 +109,64 @@ async function loadPractice() {
       <div class="practice-card-num">0${i + 1}</div>
       <span class="practice-card-icon">${esc(a.icon)}</span>
       <h3 class="practice-card-title">${esc(a.title)}</h3>
-      <p class="practice-card-desc">${esc(a.description)}</p>
+      <div class="practice-card-body">
+        <div class="practice-card-desc-wrap">
+          <p class="practice-card-desc">${esc(a.description)}</p>
+        </div>
+        <button class="practice-read-more" onclick="togglePracticeDesc(this)" aria-expanded="false">
+          Baca Selengkapnya <span class="practice-read-more-arrow">↓</span>
+        </button>
+      </div>
     </div>
     `).join('');
+ 
+    // Setelah render, periksa apakah deskripsi setiap card perlu tombol expand
+    grid.querySelectorAll('.practice-card').forEach(card => {
+        const wrap = card.querySelector('.practice-card-desc-wrap');
+        const btn  = card.querySelector('.practice-read-more');
+        // Pasang class collapsed dulu, lalu cek apakah konten terpotong
+        wrap.classList.add('collapsed');
+        requestAnimationFrame(() => {
+            if (wrap.scrollHeight <= wrap.clientHeight + 2) {
+                // Konten pendek — tidak perlu tombol
+                btn.style.display = 'none';
+                wrap.classList.remove('collapsed');
+            }
+        });
+    });
+ 
     grid.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+}
+ 
+function togglePracticeDesc(btn) {
+    const wrap     = btn.previousElementSibling; // .practice-card-desc-wrap
+    const arrow    = btn.querySelector('.practice-read-more-arrow');
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+ 
+    if (expanded) {
+        // Collapse: set height ke scrollHeight dulu, lalu ke max-height agar transisi smooth
+        wrap.style.maxHeight = wrap.scrollHeight + 'px';
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                wrap.style.maxHeight = 'var(--practice-desc-max-height, 7.5em)';
+                wrap.classList.add('collapsed');
+            });
+        });
+        btn.setAttribute('aria-expanded', 'false');
+        btn.innerHTML = 'Baca Selengkapnya <span class="practice-read-more-arrow">↓</span>';
+    } else {
+        // Expand: lepas collapsed, set height ke scrollHeight
+        wrap.classList.remove('collapsed');
+        wrap.style.maxHeight = wrap.scrollHeight + 'px';
+        // Setelah transisi selesai, set ke none agar konten bisa fleksibel
+        wrap.addEventListener('transitionend', () => {
+            if (btn.getAttribute('aria-expanded') === 'true') {
+                wrap.style.maxHeight = 'none';
+            }
+        }, { once: true });
+        btn.setAttribute('aria-expanded', 'true');
+        btn.innerHTML = 'Lebih Sedikit <span class="practice-read-more-arrow">↓</span>';
+    }
 }
 
 // ===== LOAD TEAM =====
