@@ -3,7 +3,7 @@
   <div class="about-visual" data-animate>
     <div class="about-corner-accent"></div>
     <div class="about-img-frame">
-      <img src="./assets/img/About2.PNG" alt="Ferdinand Hutahaean & Co" class="about-img-photo" />
+      <img src="./assets/img/about2.PNG" alt="Ferdinand Hutahaean & Co" class="about-img-photo" />
       <div class="about-img-inner" id="aboutImgInner">
         <div class="about-emblem">FH</div>
         <div class="about-emblem-sub">Ferdinand Hutahaean<br>& Co</div>
