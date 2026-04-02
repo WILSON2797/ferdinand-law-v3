@@ -4,7 +4,7 @@
 
 (async function init() {
     await loadSiteData();
-    await Promise.all([loadPractice(), loadCases(), loadTeam(), loadTestimonials(), loadNews()]);
+    await Promise.all([loadPractice(), loadCases(), loadPracticeDropdown(), loadTeam(), loadTestimonials(), loadNews()]);
 
     // Auto-login jika token tersimpan
     if (authToken) {

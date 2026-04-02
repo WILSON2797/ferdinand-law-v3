@@ -429,6 +429,23 @@ async function submitTestimonial() {
     }
 }
 
+// ===== LOAD PRACTICE AREAS KE DROPDOWN KONTAK =====
+async function loadPracticeDropdown() {
+    const areas  = await apiGet('/practice-areas');
+    const select = document.getElementById('form-subject');
+    if (!select) return;
+ 
+    select.innerHTML = '<option value="">Pilih bidang...</option>';
+    if (!areas || !areas.length) return;
+ 
+    areas.forEach(a => {
+        const opt = document.createElement('option');
+        opt.value       = a.title;
+        opt.textContent = a.title;
+        select.appendChild(opt);
+    });
+}
+
 // ===== CONTACT FORM =====
 async function submitContact() {
     const name    = document.getElementById('form-name').value.trim();

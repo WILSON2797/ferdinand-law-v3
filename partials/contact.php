@@ -87,14 +87,7 @@
       <div class="form-group">
         <label>Bidang Hukum</label>
         <select id="form-subject">
-          <option value="">Pilih bidang...</option>
-          <option>Hukum Korporasi</option>
-          <option>Litigasi & Arbitrase</option>
-          <option>Hukum Ketenagakerjaan</option>
-          <option>Hukum Properti</option>
-          <option>Hukum Bisnis</option>
-          <option>Hukum Internasional</option>
-          <option>Lainnya</option>
+          <option value="">Memuat bidang hukum...</option>
         </select>
       </div>
     </div>
