@@ -7,10 +7,10 @@ require_once __DIR__ . '/../config.php';
 // ============================================================
 define('MAIL_HOST',       'smtp.gmail.com');
 define('MAIL_PORT',       587);
-define('MAIL_USERNAME',   'lawfirmferdinand@gmail.com');      // Gmail pengirim (akun Gmail Anda)
-define('MAIL_PASSWORD',   'lptc lejz khlw kihf');      // Gmail App Password (bukan password biasa!)
-define('MAIL_FROM_NAME',  'Ferdinand Hutahaean & Co'); // Nama pengirim
-define('MAIL_ADMIN',      'official@lawfirmferdinandnco.my.id');   // Email tujuan notifikasi admin
+define('MAIL_USERNAME',   '');      // Gmail pengirim (akun Gmail Anda)
+define('MAIL_PASSWORD',   '');      // Gmail App Password (bukan password biasa!)
+define('MAIL_FROM_NAME',  ''); // Nama pengirim
+define('MAIL_ADMIN',      '');   // Email tujuan notifikasi admin
 // ============================================================
 
 /**
